@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Medicines – MedsOnDoor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Meds<span>On</span>Door</div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="order.html">Order Now</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Order Now</h2>
+      <p class="section-subtitle">
+        Fill this form and we’ll open a WhatsApp chat with your order details.<br />
+        Then you can attach your <strong>doctor prescription photo</strong> and send.
+      </p>
+
+      <div class="form-card">
+        <form id="orderForm">
+          <div class="form-row">
+            <label for="name">Full Name</label>
+            <input id="name" type="text" required />
+          </div>
+
+          <div class="form-row">
+            <label for="phone">Mobile Number</label>
+            <input id="phone" type="tel" placeholder="10-digit number" required />
+          </div>
+
+          <div class="form-row">
+            <label for="address">Full Delivery Address</label>
+            <textarea id="address" required placeholder="House no., street, area, landmark, Bhopal 4620xx"></textarea>
+          </div>
+
+          <div class="form-row">
+            <label for="items">Medicines / Items Required</label>
+            <textarea id="items" required placeholder="Example: Tab XYZ 10mg – 1 strip, Paracetamol 650 – 2 strips"></textarea>
+          </div>
+
+          <div class="form-row">
+            <label for="notes">Extra Notes (optional)</label>
+            <textarea id="notes" placeholder="Preferred time, payment mode, special instructions, etc."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            Send to WhatsApp
+          </button>
+
+          <p style="font-size:0.8rem;margin-top:8px;color:#555;">
+            By clicking “Send to WhatsApp” your order text will open in a chat with
+            <strong>MedsOnDoor (+91 74153 69601)</strong>.  
+            Please check the details and press <strong>Send</strong> in WhatsApp.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> MedsOnDoor. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const form = document.getElementById("orderForm");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const items = document.getElementById("items").value.trim();
+      const notes = document.getElementById("notes").value.trim();
+
+      if (!name || !phone || !address || !items) {
+        alert("Please fill Name, Mobile, Address and Items.");
+        return;
+      }
+
+      const text =
+        "New MedsOnDoor Order\n\n" +
+        "Name: " + name + "\n" +
+        "Mobile: " + phone + "\n\n" +
+        "Delivery Address:\n" + address + "\n\n" +
+        "Medicines / Items:\n" + items + "\n\n" +
+        (notes ? "Extra Notes:\n" + notes + "\n\n" : "") +
+        "I will also send my doctor prescription photo.";
+
+      const number = "917415369601"; // your WhatsApp number (no +)
+      const url = "https://wa.me/" + number + "?text=" + encodeURIComponent(text);
+
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About – MedsOnDoor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Meds<span>On</span>Door</div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="order.html">Order Now</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">About MedsOnDoor</h2>
+      <p class="section-subtitle">
+        “Bringing better health to your home.”
+      </p>
+
+      <div class="card">
+        <h3>Who we are</h3>
+        <p>
+          MedsOnDoor is an online pharmacy home-delivery service based in
+          Bhopal. We help you get genuine medicines, OTC products and daily
+          essentials without stepping out of your home.
+        </p>
+        <br />
+
+        <h3>What we do</h3>
+        <p>
+          You send your doctor prescription on WhatsApp, we arrange medicines
+          from trusted, licensed pharmacies and deliver them at your doorstep –
+          usually within a few hours inside Bhopal.
+        </p>
+        <br />
+
+        <h3>Why customers love us</h3>
+        <ul style="margin-left:18px;font-size:0.9rem;">
+          <li>Free home delivery on orders above ₹699</li>
+          <li>Minimum 16% to 85% discount on medicines (T&amp;C apply)</li>
+          <li>Service available all over Bhopal and nearby areas</li>
+          <li>Easy ordering through form + WhatsApp</li>
+        </ul>
+        <br />
+
+        <h3>Our address</h3>
+        <p>
+          Medicine Street, Bhopal – 462001<br />
+          WhatsApp: +91 74153 69601
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> MedsOnDoor. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ – MedsOnDoor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Meds<span>On</span>Door</div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="order.html">Order Now</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+
+      <div class="card">
+        <h3>Do I need a prescription?</h3>
+        <p>
+          Yes. A valid doctor prescription is required for all prescription
+          medicines. For OTC and daily needs items, prescription is not needed.
+        </p>
+        <br />
+
+        <h3>How do I place an order?</h3>
+        <p>
+          You can use the <a href="order.html">Order Now</a> form on our website
+          or send us a message directly on WhatsApp with your details and prescription.
+        </p>
+        <br />
+
+        <h3>How long will delivery take?</h3>
+        <p>
+          For most locations in Bhopal, we target delivery within around 2 hours
+          of order confirmation, depending on stock, traffic and your exact area.
+        </p>
+        <br />
+
+        <h3>Which areas do you serve?</h3>
+        <p>
+          Service is available all over Bhopal and nearby areas. You can share your
+          location on WhatsApp to confirm coverage.
+        </p>
+        <br />
+
+        <h3>What payment methods do you accept?</h3>
+        <p>
+          We generally support Cash on Delivery and popular online payment options
+          (like UPI). You can confirm the exact options with our team in chat.
+        </p>
+        <br />
+
+        <h3>Are the medicines genuine?</h3>
+        <p>
+          Yes. All medicines are sourced from authorised, licensed pharmacies only
+          and are billed properly with checked expiry dates.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> MedsOnDoor. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
